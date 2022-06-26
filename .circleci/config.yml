@@ -6,19 +6,19 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run:
-          name: Echo Hello
-          commmand: echo hello
+          name: "Echo Hello"
+          commmand: "echo hello"
 
   print-world:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - run:
-          name: Echo World
-          commmand: echo world
+          name: "Echo World"
+          commmand: "echo world"
 
 workflows:
-  say-hello-world-workflow:
+  hello-world-workflow:
     jobs:
       - print-hello
       - print-world:
