@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   print-hello:
     docker:
-      - image: circleci/node:13.8.0
+      - image: cimg/base:2021.11
     steps:
       - run:
           name: Echo Hello
@@ -11,11 +11,18 @@ jobs:
 
   print-world:
     docker:
-      - image: circleci/node:13.8.0
+      - image: cimg/base:2021.11
     steps:
       - run:
           name: Echo World
           command: echo world
+
+  env-practice:
+    docker: cimg/base:2021.11
+    steps:
+      - run:
+          name: Echo Env
+          command: echo $MY_NAME
 
 workflows:
   hello-world-workflow:
