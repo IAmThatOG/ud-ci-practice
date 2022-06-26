@@ -10,16 +10,16 @@ jobs:
       - circleci/node:13.8.0
     steps:
       - run:
-          name: Echo Hello
-          commmand: echo hello
+          name: "Echo Hello"
+          commmand: "echo hello"
 
   print-world:
     docker:
       - circleci/node:13.8.0
     steps:
       - run:
-          name: Echo World
-          commmand: echo world
+          name: "Echo World"
+          commmand: "echo world"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
