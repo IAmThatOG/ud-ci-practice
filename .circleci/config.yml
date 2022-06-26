@@ -18,7 +18,8 @@ jobs:
           command: echo world
 
   env-practice:
-    docker: cimg/base:2021.11
+    docker:
+      - image: cimg/base:2021.11
     steps:
       - run:
           name: Echo Env
