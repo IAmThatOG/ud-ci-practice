@@ -1,6 +1,6 @@
 version: 2.1
 
-commmands:
+commands:
   print_pipeline_id:
     description: prints the circleci workflow id
     steps:
