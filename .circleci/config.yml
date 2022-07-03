@@ -33,6 +33,8 @@ jobs:
           name: Save Hello Output
           command: |
             echo hello world > output.txt
+            pwd
+            ls -lah
             mkdir workspace
       - persist_to_workspace:
           root: /workspace
