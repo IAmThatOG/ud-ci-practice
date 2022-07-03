@@ -36,7 +36,6 @@ jobs:
             mkdir workspace
             ls -lah
             echo hello world > workspace/output.txt
-            ls -lah
       - persist_to_workspace:
           root: ./workspace
           paths:
@@ -50,7 +49,9 @@ jobs:
           at: ./workspace
       - run:
           name: Echo Workspace File
-          command: cat output.txt
+          command: |
+            ls -lah
+            cat output.txt
 
 workflows:
   hello-world-workflow:
