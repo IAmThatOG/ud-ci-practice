@@ -58,11 +58,23 @@ jobs:
           command: |
             cat ./workspace/output.txt
 
-  print_workflow:
+  print_workflow_id:
     docker:
       - image: cimg/base:2021.11
     steps:
       - print_pipeline_id
+
+  failing_job:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run:
+          name: Cause Job Failure
+          command: return 1
+      - run:
+          name: Failed Job Listener
+          command: echo Job has failed
+          when: on_fail
 
 workflows:
   hello-world-workflow:
@@ -76,4 +88,5 @@ workflows:
       # - print_output_file:
       #     requires:
       #       - save_hello_world_output
-      - print_workflow
+      # - print_workflow
+      - failing_job
