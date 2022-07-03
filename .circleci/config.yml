@@ -70,7 +70,7 @@ jobs:
     steps:
       - run:
           name: Cause Job Failure
-          command: return 1
+          command: exit 1
       - run:
           name: Failed Job Listener
           command: echo Job has failed
