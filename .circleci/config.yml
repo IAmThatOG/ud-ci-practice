@@ -32,8 +32,9 @@ jobs:
       - run:
           name: Save Hello Output
           command: echo hello world > output.txt
+          command: ls -lah .
       - persist_to_workspace:
-          root: ./workspace
+          root: .
           paths:
             - output.txt
 
@@ -42,7 +43,7 @@ jobs:
       - image: cimg/base:2021.11
     steps:
       - attach_workspace:
-          at: ./workspace
+          at: . 
       - run:
           name: Echo Workspace File
           command: cat output.txt
