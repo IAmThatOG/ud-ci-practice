@@ -33,7 +33,7 @@ jobs:
           name: Save Hello Output
           command: |
             pwd
-            makedir workspace
+            mkdir workspace
             ls -lah
             echo hello world > workspace/output.txt
             ls -lah
