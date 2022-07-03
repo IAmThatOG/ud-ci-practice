@@ -32,9 +32,7 @@ jobs:
       - run:
           name: Save Hello Output
           command: |
-            pwd
             mkdir workspace
-            ls -lah
             echo hello world > workspace/output.txt
       - persist_to_workspace:
           root: ./workspace
@@ -50,8 +48,6 @@ jobs:
       - run:
           name: Echo Workspace File
           command: |
-            ls -lah
-            ls -lah ./workspace
             cat ./workspace/output.txt
 
 workflows:
