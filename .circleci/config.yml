@@ -36,8 +36,9 @@ jobs:
             pwd
             ls -lah
             mkdir workspace
+            ls -lah
       - persist_to_workspace:
-          root: /workspace
+          root: ./workspace
           paths:
             - output.txt
 
@@ -46,7 +47,7 @@ jobs:
       - image: cimg/base:2021.11
     steps:
       - attach_workspace:
-          at: /workspace
+          at: ./workspace
       - run:
           name: Echo Workspace File
           command: cat output.txt
