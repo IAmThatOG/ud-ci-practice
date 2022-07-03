@@ -50,7 +50,7 @@ jobs:
           command: |
             cat ./workspace/output.txt
 
-  commmand:
+  commmands:
     print_pipeline_id:
       description: prints the circleci workflow id
       steps:
