@@ -1,5 +1,11 @@
 version: 2.1
 
+commmands:
+  print_pipeline_id:
+    description: prints the circleci workflow id
+    steps:
+      - run: echo workflow id - $CIRCLE_WORKFLOW_ID
+
 jobs:
   print-hello:
     docker:
@@ -49,12 +55,6 @@ jobs:
           name: Echo Workspace File
           command: |
             cat ./workspace/output.txt
-
-  commmands:
-    print_pipeline_id:
-      description: prints the circleci workflow id
-      steps:
-        - run: echo workflow id - $CIRCLE_WORKFLOW_ID
 
   print_workflow:
     docker:
