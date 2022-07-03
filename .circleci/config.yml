@@ -32,10 +32,10 @@ jobs:
       - run:
           name: Save Hello Output
           command: |
-            echo hello world > output.txt
             pwd
+            makedir workspace
             ls -lah
-            mkdir workspace
+            echo hello world > workspace/output.txt
             ls -lah
       - persist_to_workspace:
           root: ./workspace
