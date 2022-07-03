@@ -33,9 +33,9 @@ jobs:
           name: Save Hello Output
           command: |
             echo hello world > output.txt
-            ls -lah
+            mkdir workspace
       - persist_to_workspace:
-          root: workspace
+          root: /workspace
           paths:
             - output.txt
 
@@ -44,7 +44,7 @@ jobs:
       - image: cimg/base:2021.11
     steps:
       - attach_workspace:
-          at: /tmp/workspace
+          at: /workspace
       - run:
           name: Echo Workspace File
           command: cat output.txt
