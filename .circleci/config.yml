@@ -39,7 +39,7 @@ jobs:
       - persist_to_workspace:
           root: ./workspace
           paths:
-            - *
+            - ./*
 
   print_output_file:
     docker:
