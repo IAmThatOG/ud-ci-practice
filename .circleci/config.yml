@@ -50,6 +50,18 @@ jobs:
           command: |
             cat ./workspace/output.txt
 
+  commmand:
+    print_pipeline_id:
+      description: prints the circleci workflow id
+      steps:
+        - run: echo workflow id - $CIRCLE_WORKFLOW_ID
+
+  print_workflow:
+    docker:
+      - image: cimg/base:2021.11
+    steps:
+      - print_pipeline_id
+
 workflows:
   hello-world-workflow:
     jobs:
@@ -58,7 +70,8 @@ workflows:
       #     requires:
       #       - print-hello
       # - print-env
-      - save_hello_world_output
-      - print_output_file:
-          requires:
-            - save_hello_world_output
+      # - save_hello_world_output
+      # - print_output_file:
+      #     requires:
+      #       - save_hello_world_output
+      - print_workflow
