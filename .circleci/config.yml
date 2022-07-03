@@ -5,8 +5,8 @@ commands:
     description: prints the circleci workflow id
     steps:
       - run:
-        name: Echo Pipeline Workflow ID
-        command: echo workflow id - $CIRCLE_WORKFLOW_ID
+          name: Echo Pipeline Workflow ID
+          command: echo workflow id - $CIRCLE_WORKFLOW_ID
 
 jobs:
   print-hello:
