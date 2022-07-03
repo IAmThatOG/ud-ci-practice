@@ -25,11 +25,37 @@ jobs:
           name: Echo Env
           command: echo $MY_NAME
 
+  save_hello_world_output:
+    docker:
+      - image: cimg/base:2021.11
+    steps:
+      - run:
+          name: Save Hello Output
+          command: echo hello world > output.txt
+      - persist_to_workspace:
+          root: /workspace
+          paths:
+            - output.txt
+
+  print_output_file:
+    docker:
+      - image: cimg/base:2021.11
+    steps:
+      - attach_workspace:
+          at: /workspace
+      - run:
+          name: Echo Workspace File
+          command: cat output.txt
+
 workflows:
   hello-world-workflow:
     jobs:
-      - print-hello
-      - print-world:
+      # - print-hello
+      # - print-world:
+      #     requires:
+      #       - print-hello
+      # - print-env
+      - save_hello_world_output
+      - print_output_file:
           requires:
-            - print-hello
-      - print-env
+            - save_hello_world_output
