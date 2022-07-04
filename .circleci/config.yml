@@ -72,7 +72,7 @@ jobs:
           name: Saving Files to Cache
           key: cache-key-{{ .BuildNum }}
           paths:
-            - ./*
+            - ./output.txt
 
   print_hello_world_cache:
     docker:
