@@ -70,7 +70,7 @@ jobs:
             ls -lah
       - save_cache:
           name: Saving Files to Cache
-          key: cache-key-{{ checksum "Readme.md" }}
+          key: cache-key-1
           paths:
             - ./output.txt
 
@@ -80,7 +80,7 @@ jobs:
     steps:
       - restore_cache:
           name: Restore Cache
-          key: cache-key-{{ checksum "Readme.md" }}
+          key: cache-key-1
       - run:
           name: Echo Workspace File
           command: |
