@@ -69,7 +69,7 @@ jobs:
             ls -lah
       - save_cache:
           name: Saving Files to Cache
-          key: cache-key-{{ .BuildNum }}
+          key: cache-key-{{ .Branch }}
           paths:
             - ./*
 
@@ -79,7 +79,7 @@ jobs:
     steps:
       - restore_cache:
           name: Restore Cache
-          key: cache-key-{{ .BuildNum }}
+          key: cache-key-{{ .Branch }}
       - run:
           name: Echo Workspace File
           command: |
