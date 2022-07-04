@@ -65,11 +65,12 @@ jobs:
       - run:
           name: Save Hello Output
           command: |
+            pwd
             echo hello world > ./output.txt
             ls -lah
       - save_cache:
           name: Saving Files to Cache
-          key: cache-key-{{ .Branch }}
+          key: cache-key-{{ .BuildNum }}
           paths:
             - ./*
 
@@ -79,10 +80,11 @@ jobs:
     steps:
       - restore_cache:
           name: Restore Cache
-          key: cache-key-{{ .Branch }}
+          key: cache-key
       - run:
           name: Echo Workspace File
           command: |
+            pwd
             ls -lah
             cat ./output.txt
 
