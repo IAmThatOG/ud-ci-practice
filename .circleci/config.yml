@@ -65,8 +65,8 @@ jobs:
       - run:
           name: Save Hello Output
           command: |
-            mkdir workspace
-            echo hello world > workspace/output.txt
+            echo hello world > ./output.txt
+            ls -lah
       - save_cache:
           name: Saving Files to Cache
           key: cache-key
@@ -83,6 +83,7 @@ jobs:
       - run:
           name: Echo Workspace File
           command: |
+            ls -lah
             cat ./output.txt
 
   print_workflow_id:
