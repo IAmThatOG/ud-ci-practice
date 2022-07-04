@@ -118,6 +118,6 @@ workflows:
       # - print_workflow
       # - failing_job
       - save_hello_world_cache
-      - print_hello_world_cache
+      - print_hello_world_cache:
           requires:
             - save_hello_world_cache
