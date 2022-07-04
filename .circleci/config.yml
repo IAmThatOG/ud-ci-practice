@@ -33,7 +33,7 @@ jobs:
           name: Echo Env
           command: echo $MY_NAME
 
-  save_hello_world_output:
+  save_hello_world_workspace:
     docker:
       - image: cimg/base:2021.11
     steps:
@@ -47,7 +47,7 @@ jobs:
           paths:
             - ./*
 
-  print_output_file:
+  print_hello_world_workspace:
     docker:
       - image: cimg/base:2021.11
     steps:
@@ -57,6 +57,33 @@ jobs:
           name: Echo Workspace File
           command: |
             cat ./workspace/output.txt
+
+  save_hello_world_cache:
+    docker:
+      - image: cimg/base:2021.11
+    steps:
+      - run:
+          name: Save Hello Output
+          command: |
+            mkdir workspace
+            echo hello world > workspace/output.txt
+      - save_cache:
+          name: Saving Files to Cache
+          key: cache-key
+          paths:
+            - ./*
+
+  print_hello_world_cache:
+    docker:
+      - image: cimg/base:2021.11
+    steps:
+      - restore_cache:
+          name: Restore Cache
+          key: cache-key
+      - run:
+          name: Echo Workspace File
+          command: |
+            cat ./output.txt
 
   print_workflow_id:
     docker:
@@ -84,9 +111,13 @@ workflows:
       #     requires:
       #       - print-hello
       # - print-env
-      # - save_hello_world_output
-      # - print_output_file:
+      # - save_hello_world_cache
+      # - print_hello_world_cache:
       #     requires:
-      #       - save_hello_world_output
+      #       - save_hello_world_cache
       # - print_workflow
-      - failing_job
+      # - failing_job
+      - save_hello_world_cache
+      - print_hello_world_cache
+          requires:
+            - save_hello_world_cache
